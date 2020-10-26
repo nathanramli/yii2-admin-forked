@@ -1,12 +1,12 @@
 {
-    "name": "nathanramli/yii2-admin",
+    "name": "nathanramli/yii2-admin-forked",
     "description": "RBAC Auth manager for Yii2 ",
     "keywords": ["yii", "admin", "auth", "rbac"],
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/nathanramli/yii2-admin/issues",
-        "source": "https://github.com/nathanramli/yii2-admin"
+        "issues": "https://github.com/nathanramli/yii2-admin-forked/issues",
+        "source": "https://github.com/nathanramli/yii2-admin-forked"
     },
     "authors": [
         {
@@ -18,7 +18,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/nathanramli/yii2-admin"
+            "url": "https://github.com/nathanramli/yii2-admin-forked"
         }
     ],
     "require": {
