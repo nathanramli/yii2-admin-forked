@@ -4,8 +4,6 @@ use yii\helpers\Html;
 // use yii\grid\GridView;
 use mdm\admin\components\Helper;
 use common\models\OfficeOrUnit;
-use appanggaran\models\BagianModels;
-use appgudang\models\masterData\KelompokPetugas;
 use kartik\grid\GridView;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
@@ -59,25 +57,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ],
                     'label' => 'Unit Kerja'
-
-                ],
-                [
-                    'class' => '\kartik\grid\DataColumn',
-                    'attribute' => 'id_bidang',
-                    'value' => function ($model) {
-                        $modUnit = BagianModels::find()->where(['IDBAGIAN' => $model->id_bidang])->one();
-                        return (isset($modUnit->NAMABAGIAN) ? $modUnit->NAMABAGIAN : '');
-                    },
-                    'filter' => ArrayHelper::map(BagianModels::find()->asArray()->all(), 'IDBAGIAN', 'NAMABAGIAN'),
-                    'filterType' => GridView::FILTER_SELECT2,
-                    'filterWidgetOptions' => [
-                        'options' => ['prompt' => 'Filter Unit Kerja..'],
-                        'pluginOptions' => [
-                            'allowClear' => true,
-                            'width' => '100%'
-                        ],
-                    ],
-                    'label' => 'Bidang',
 
                 ],
                 [
