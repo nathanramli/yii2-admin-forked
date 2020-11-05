@@ -4,7 +4,7 @@ namespace mdm\admin\models\searchs;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use appanggaran\models\BagianModels;
+use common\models\BagianModels;
 
 /**
  * BagianSearch represents the model behind the search form of `appanggaran\models\BagianModels`.

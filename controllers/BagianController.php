@@ -3,7 +3,7 @@
 namespace mdm\admin\controllers;
 
 use Yii;
-use appanggaran\models\BagianModels;
+use common\models\BagianModels;
 use mdm\admin\models\searchs\BagianSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
