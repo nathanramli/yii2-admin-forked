@@ -43,7 +43,7 @@ $this->registerCssFile($url.'/main.css');
         NavBar::end();
         ?>
 
-        <div class="container">
+        <div class="container-fluid">
             <?= Alert::widget() ?>
             <?= $content ?>
         </div>
