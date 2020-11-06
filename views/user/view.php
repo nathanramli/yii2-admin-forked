@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use mdm\admin\components\Helper;
+use common\models\Jabatan;
+use common\models\OfficeOrUnit;
 
 /* @var $this yii\web\View */
 /* @var $model mdm\admin\models\User */
@@ -50,9 +52,24 @@ $controllerId = $this->context->uniqueId . '/';
                 'username',
                 'nama',
                 'is_admin',
-                'email:email',
-                'created_at:date',
-                'status',
+                [
+                    'attribute' => 'id_cabang',
+                    'value' => function($model){
+                        $m = OfficeOrUnit::findOne(['unit_id' => $model['id_cabang']]);
+                        
+                        return "<b>" . $m['code'] . "</b>: " . $m['name'];
+                    },
+                    'label' => 'Cabang',
+                    'format' => 'raw'
+                ],
+                [
+                    'attribute' => 'id_jabatan',
+                    'value' => function($model){
+                        return Jabatan::findOne(['id' => $model['id_jabatan']])['nama_jabatan'];
+                    },
+                    'label' => 'Jabatan'
+                ],
+                'created_at:date'
             ],
         ])
     ?>

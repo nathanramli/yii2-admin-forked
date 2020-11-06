@@ -38,9 +38,9 @@ $cabang = ArrayHelper::map($modcabang, 'unit_id', 'name');
 $identity = Yii::$app->user->identity;
 
 if ($identity->is_admin == '1') {
-    $role = ['0' => 'Member', '1' => 'Admin Pusat', '2' => 'Admin Unit Kerja'];
+    $role = ['0' => 'Member', '1' => 'Admin Pusat', '2' => 'Admin Unit Cabang'];
 } else {
-    $role = ['0' => 'Member', '2' => 'Admin Unit Kerja'];
+    $role = ['0' => 'Member', '2' => 'Admin Unit Cabang'];
 }
 $js = "
 $('#parent_id').change(function(){
