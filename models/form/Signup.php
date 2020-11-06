@@ -17,6 +17,8 @@ class Signup extends Model
     public $id_cabang;
     public $is_admin;
     public $id_jabatan;
+    public $nip;
+    public $passphrase;
     public $isNewRecord;
     public $nama;
     public $password;
@@ -42,6 +44,7 @@ class Signup extends Model
             [['is_admin'], 'string', 'max' => 128],
             [['nama'], 'string', 'max' => 128],
             ['id_jabatan', 'required'],
+            [['nip', 'passphrase'], 'safe'],
 
 
             ['password', 'required'],
@@ -67,6 +70,8 @@ class Signup extends Model
             $user->id_cabang = $this->id_cabang;
             $user->id_jabatan = $this->id_jabatan;
             $user->is_admin = $this->is_admin;
+            $user->nip = $this->nip;
+            $user->passphrase = $this->passphrase;
             $user->nama = $this->nama;
             $user->status = ArrayHelper::getValue(Yii::$app->params, 'user.defaultStatus', UserStatus::ACTIVE);
             $user->setPassword($this->password);

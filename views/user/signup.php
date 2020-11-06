@@ -76,6 +76,10 @@ $this->registerJs(
                 <?= $form->field($model, 'username') ?>
             <?php } ?>
 
+            <?= $form->field($model, 'nip')->textInput() ?>
+            
+            <?= $form->field($model, 'passphrase')->textInput() ?>
+            
             <?= $form->field($model, 'id_cabang')->widget(Select2::classname(), [
                 'data' => $cabang,
                 'language' => 'en',

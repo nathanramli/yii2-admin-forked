@@ -28,6 +28,8 @@ use common\models\OfficeOrUnit;
  * @property integer $updated_at
  * @property string $password write-only password
  * @property string $id_jabatan
+ * @property string $nip
+ * @property string $passphrase
  *
  * @property UserProfile $profile
  */

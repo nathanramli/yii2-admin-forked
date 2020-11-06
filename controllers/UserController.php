@@ -221,6 +221,8 @@ class UserController extends Controller
             $model->id_cabang = $data['id_cabang'];
             $model->id_jabatan = $data['id_jabatan'];
             $model->is_admin = $data['is_admin'];
+            $model->passphrase = $data['passphrase'];
+            $model->nip = $data['nip'];
             $model->save(false);
             Helper::invalidate();
             return $this->redirect(['view', 'id' => $model->id]);
