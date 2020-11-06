@@ -14,11 +14,9 @@ class Signup extends Model
 {
     public $username;
     public $email;
-    public $id_bagian;
-    public $id_kelompok;
     public $id_cabang;
-    public $id_bidang;
     public $is_admin;
+    public $id_jabatan;
     public $isNewRecord;
     public $nama;
     public $password;
@@ -37,16 +35,13 @@ class Signup extends Model
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required'],
             ['email', 'email'],
             ['email', 'unique', 'targetClass' => $class, 'message' => 'This email address has already been taken.'],
 
-            [['id_bagian'], 'string', 'max' => 128],
-            [['id_kelompok'], 'string', 'max' => 128],
             [['id_cabang'], 'string', 'max' => 128],
-            [['id_bidang'], 'string', 'max' => 128],
             [['is_admin'], 'string', 'max' => 128],
             [['nama'], 'string', 'max' => 128],
+            ['id_jabatan', 'required'],
 
 
             ['password', 'required'],

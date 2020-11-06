@@ -2,8 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use appanggaran\models\BagianModels;
+use common\models\BagianModels;
 use common\models\OfficeOrUnit;
+use common\models\Jabatan;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use yii\web\View;
@@ -35,8 +36,7 @@ $modcabang = $modcabangac->all();
 $cabang = ArrayHelper::map($modcabang, 'unit_id', 'name');
 
 // Get Data Unit Kerja
-$modunit_kerja = OfficeOrUnit::find()->select(['unit_id', new \yii\db\Expression("name")])->where(['parent_id' => 1])->all();
-$unit_kerja = ArrayHelper::map($modunit_kerja, 'unit_id', 'name');
+$unit_kerja = ArrayHelper::map(Jabatan::find()->all(), 'unit_id', 'name');
 $identity = Yii::$app->user->identity;
 
 if ($identity->is_admin == '1') {
@@ -77,7 +77,6 @@ $this->registerJs(
             <?php if ($model->isNewRecord) { ?>
                 <?= $form->field($model, 'username') ?>
             <?php } ?>
-            <?= $form->field($model, 'email') ?>
 
             <?= $form->field($model, 'id_cabang')->widget(Select2::classname(), [
                 'data' => $cabang,
@@ -90,24 +89,16 @@ $this->registerJs(
                 ($model->isNewRecord ? ['value' => Yii::$app->user->identity->id_cabang] : [])
             ])->label('Cabang'); ?>
 
-            <?= $form->field($model, 'id_bagian')->widget(Select2::classname(), [
+            <?= $form->field($model, 'id_jabatan')->widget(Select2::classname(), [
                 'data' => $unit_kerja,
                 'language' => 'en',
-                'options' => ['id' => 'bagian', 'placeholder' => 'Pilih Unit Kerja ...'],
+                'options' => ['id' => 'jabatan', 'placeholder' => 'Pilih Jabatan ...'],
                 'pluginOptions' => [
                     'allowClear' => true
                 ],
-            ])->label('Unit Kerja');
+            ])->label('Jabatan');
             ?>
-            <?= $form->field($model, 'id_bidang')->widget(Select2::classname(), [
-                'data' => $bidang,
-                'language' => 'en',
-                'options' => ['id' => 'id_bidang', 'placeholder' => 'Pilih Unit Kerja ...'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ])->label('Bagian');
-            ?>
+
             <?= $form->field($model, 'is_admin')->widget(Select2::classname(), [
                 'data' => $role,
                 'language' => 'en',

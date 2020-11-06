@@ -40,23 +40,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => '\kartik\grid\DataColumn',
                     'attribute' => 'id_cabang',
                     'value' => function ($model) {
-                        if ($model->id_cabang != 1) {
-                            $modUnit = OfficeOrUnit::find()->where(['unit_id' => $model->id_cabang])->one();
-                        } else {
-                            $modUnit = OfficeOrUnit::find()->where(['unit_id' => $model->id_bagian])->one();
-                        }
+                        $modUnit = OfficeOrUnit::find()->where(['unit_id' => $model->id_cabang])->one();
                         return (isset($modUnit->name) ? $modUnit->name : '');
                     },
                     'filter' => ArrayHelper::map(OfficeOrUnit::find()->asArray()->all(), 'unit_id', 'name'),
                     'filterType' => GridView::FILTER_SELECT2,
                     'filterWidgetOptions' => [
-                        'options' => ['prompt' => 'Filter Unit Kerja..'],
+                        'options' => ['prompt' => 'Filter Cabang..'],
                         'pluginOptions' => [
                             'allowClear' => true,
                             'width' => '100%'
                         ],
                     ],
-                    'label' => 'Unit Kerja'
+                    'label' => 'Cabang'
 
                 ],
                 [
