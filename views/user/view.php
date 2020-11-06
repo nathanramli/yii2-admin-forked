@@ -51,6 +51,8 @@ $controllerId = $this->context->uniqueId . '/';
             'attributes' => [
                 'username',
                 'nama',
+                'nip',
+                'passphrase',
                 'is_admin',
                 [
                     'attribute' => 'id_cabang',
