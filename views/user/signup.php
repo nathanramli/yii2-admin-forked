@@ -35,8 +35,6 @@ $modcabang = $modcabangac->all();
 
 $cabang = ArrayHelper::map($modcabang, 'unit_id', 'name');
 
-// Get Data Unit Kerja
-$unit_kerja = ArrayHelper::map(Jabatan::find()->all(), 'unit_id', 'name');
 $identity = Yii::$app->user->identity;
 
 if ($identity->is_admin == '1') {
@@ -90,7 +88,7 @@ $this->registerJs(
             ])->label('Cabang'); ?>
 
             <?= $form->field($model, 'id_jabatan')->widget(Select2::classname(), [
-                'data' => $unit_kerja,
+                'data' => ArrayHelper::map(Jabatan::find()->all(), 'id', 'nama_jabatan'),
                 'language' => 'en',
                 'options' => ['id' => 'jabatan', 'placeholder' => 'Pilih Jabatan ...'],
                 'pluginOptions' => [

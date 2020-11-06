@@ -219,9 +219,7 @@ class UserController extends Controller
             $data = Yii::$app->getRequest()->post('User');
             $model->nama = $data['nama'];
             $model->id_cabang = $data['id_cabang'];
-            $model->email = $data['email'];
-            $model->id_bagian = $data['id_bagian'];
-            $model->id_bidang = $data['id_bidang'];
+            $model->id_jabatan = $data['id_jabatan'];
             $model->is_admin = $data['is_admin'];
             $model->save(false);
             Helper::invalidate();
