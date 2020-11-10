@@ -2,71 +2,53 @@
 
 namespace mdm\admin\controllers;
 
-use yii\filters\AccessControl;
 use Yii;
-use mdm\admin\models\Modul;
-use mdm\admin\models\searchs\Modul as ModulSearch;
+use common\models\Jabatan;
+use common\models\Search\JabatanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use mdm\admin\components\Helper;
 
 /**
- * ModulController implements the CRUD actions for Modul model.
- *
- * @author Misbahul D Munir <misbahuldmunir@gmail.com>
- * @since 1.0
+ * JabatanController implements the CRUD actions for Jabatan model.
  */
-class ModulController extends Controller
+class JabatanController extends Controller
 {
-
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'delete' => ['POST'],
                 ],
             ],
         ];
     }
 
     /**
-     * Lists all Modul models.
+     * Lists all Jabatan models.
      * @return mixed
      */
     public function actionIndex()
     {
-        if (Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-        $searchModel = new ModulSearch;
-        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+        $searchModel = new JabatanSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Modul model.
-     * @param  integer $id
+     * Displays a single Jabatan model.
+     * @param integer $id
      * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
@@ -76,70 +58,70 @@ class ModulController extends Controller
     }
 
     /**
-     * Creates a new Modul model.
+     * Creates a new Jabatan model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Modul;
+        $model = new Jabatan();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Helper::invalidate();
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
-     * Updates an existing Modul model.
+     * Updates an existing Jabatan model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param  integer $id
+     * @param integer $id
      * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Helper::invalidate();
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
-     * Deletes an existing Modul model.
+     * Deletes an existing Jabatan model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param  integer $id
+     * @param integer $id
      * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        Helper::invalidate();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Modul model based on its primary key value.
+     * Finds the Jabatan model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param  integer $id
-     * @return Modul the loaded model
+     * @param integer $id
+     * @return Jabatan the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Modul::findOne($id)) !== null) {
+        if (($model = Jabatan::findOne($id)) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

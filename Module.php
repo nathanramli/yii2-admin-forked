@@ -92,8 +92,7 @@ class Module extends \yii\base\Module
                 'permission' => 'Permissions',
                 'route' => 'Routes',
                 'menu' => 'Menus',
-                'modul' => 'Modul',
-                'bagian' => 'Bagian',
+                'jabatan' => 'Jabatan',
                 'user-act-history' => 'History User'
             );
         

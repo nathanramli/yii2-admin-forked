@@ -4,21 +4,15 @@ namespace mdm\admin\models\searchs;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\BagianModels;
+use common\models\Jabatan;
 
-/**
- * BagianSearch represents the model behind the search form of `appanggaran\models\BagianModels`.
- */
-class BagianSearch extends BagianModels
+class JabatanSearch extends Jabatan
 {
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
-            [['IDBAGIAN', 'INDUK'], 'integer'],
-            [['NAMABAGIAN', 'CODE'], 'safe'],
+            [['id'], 'integer'],
+            [['nama_jabatan'], 'safe'],
         ];
     }
 
@@ -40,7 +34,7 @@ class BagianSearch extends BagianModels
      */
     public function search($params)
     {
-        $query = BagianModels::find();
+        $query = Jabatan::find();
 
         // add conditions that should always apply here
 
@@ -56,14 +50,7 @@ class BagianSearch extends BagianModels
             return $dataProvider;
         }
 
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'IDBAGIAN' => $this->IDBAGIAN,
-            'INDUK' => $this->INDUK,
-        ]);
-
-        $query->andFilterWhere(['like', 'NAMABAGIAN', $this->NAMABAGIAN])
-            ->andFilterWhere(['like', 'CODE', $this->CODE]);
+        $query->andFilterWhere(['like', 'nama_jabatan', $this->nama_jabatan]);
 
         return $dataProvider;
     }

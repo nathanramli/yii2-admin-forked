@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model appanggaran\models\BagianModels */
+/* @var $model common\models\Jabatan */
 
-$this->title = 'Create Bagian Models';
-$this->params['breadcrumbs'][] = ['label' => 'Bagian Models', 'url' => ['index']];
+$this->title = 'Create Jabatan';
+$this->params['breadcrumbs'][] = ['label' => 'Jabatans', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="bagian-models-create">
+<div class="jabatan-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
