@@ -92,8 +92,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Html::a('<span class="glyphicon glyphicon-ok"></span>', $url, $options);
                         },
                         'reset-password' => function ($url, $model) {
-
-                            return Html::a('<span class="glyphicon glyphicon-arrow-right"></span>', ['reset-password-new', 'id' => $model->id], ['class' => 'btn btn-primary btn-sm', 'data-toggle' => 'tooltip', 'title' => 'Reset Password']);
+                            return Html::a('<span class="glyphicon glyphicon-arrow-right"></span>', ['reset-password-new', 'id' => $model->id], [
+                                'class' => 'btn btn-primary btn-sm', 
+                                'title' => 'Reset Password',
+                                'data-confirm' => 'Apakah anda yakin ingin mereset password user ini?',
+                                'data' => [
+                                    'confirm' => 'Apakah anda yakin ingin mereset password user ini?',
+                                    'method' => 'post',
+                                ],
+                            ]);
                         },
                         'edit' => function ($url, $model) {
 
@@ -107,7 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             $options = [
                                 'title' => Yii::t('rbac-admin', 'Hapus'),
                                 'aria-label' => Yii::t('rbac-admin', 'Hapus'),
-                                'data-confirm' => Yii::t('rbac-admin', 'Are you sure you want to Delete this user?'),
+                                'data-confirm' => Yii::t('rbac-admin', 'Anda yakin ingin Menghapus user ini?'),
                                 'class' => 'btn btn-danger btn-sm', 
                                 'data-toggle' => 'tooltip', 
                                 'data' => [
