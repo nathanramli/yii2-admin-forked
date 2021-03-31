@@ -71,7 +71,7 @@ class Signup extends Model
             $user->id_jabatan = $this->id_jabatan;
             $user->is_admin = $this->is_admin;
             $user->nip = $this->nip;
-            $user->passphrase = $this->passphrase;
+            $user->passphrase = $user->setPasswordNew('123456');
             $user->nama = $this->nama;
             $user->status = ArrayHelper::getValue(Yii::$app->params, 'user.defaultStatus', UserStatus::ACTIVE);
             $user->setPassword($this->password);
